@@ -5,6 +5,7 @@ import Card from "@/components/Card.jsx";
 import Video from "@/components/Video.jsx";
 import ListItem from "@/components/ListItem.jsx";
 import Heading from "@/components/Heading";
+import SixWaysThumbnail from "@/assets/VSL-Thumbnail.png";
 ---
 
 <Layout>
@@ -16,7 +17,7 @@ import Heading from "@/components/Heading";
     heading="In Less Than An Hour, You Will Learn: "
     description=""
     sectionClass="mb-25 min-h-[50vh]"
-    contentClass="flex flex-col justify-center items-center"
+    contentClass="flex flex-col justify-center items-center lg:w-1/2"
     headingClass="my-5 px-5 text-center"
   >
     <Heading tagName={"h4"} className="text-center"
@@ -27,22 +28,26 @@ import Heading from "@/components/Heading";
   <Section
     heading="Watch Here"
     sectionClass="h-screen bg-primary min-h-[50vh]"
-    contentClass="flex flex-col justify-center items-center"
-    headingClass="py-10 text-[var(--color-background)]"
+    contentClass="flex flex-col justify-center items-center lg:w-1/2"
+    headingClass="py-10 text-[var(--color-background)] text-center"
   >
     <Video
-      src="/video.mp4"
+      vimeoId={"1032494537"}
       className={"border-3 border-yellow-400"}
+      thumbnail={SixWaysThumbnail.src}
+      allowFullScreen={true}
     />
   </Section>
 
   <Section
     sectionClass="flex flex-col justify-center items-center bg-text text-background min-h-[50vh]"
+    contentClass="px-5 sm:px-0 lg:w-1/2"
   >
     <p class="text-xl">
       <i>
-        <strong>NOTE: </strong>Finishing the training above is <u>REQUIRED</u> before having our call. We
-        will be talking about specific concepts from this training, on the call.
+        <strong>NOTE: </strong>Finishing the training above is <u>REQUIRED</u> before
+        having our call. We will be talking about specific concepts from this training,
+        on the call.
       </i>
     </p>
   </Section>
@@ -50,15 +55,15 @@ import Heading from "@/components/Heading";
   <Section
     heading=""
     description=""
-    sectionClass="cta-no-button flex justify-center items-center min-h-[30vh] py-15"
-    contentClass="flex flex-col justify-center items-center"
+    sectionClass="cta-no-button flex justify-center items-center min-h-[30vh]"
+    contentClass="flex flex-col justify-center items-center w-full"
   >
     <Heading
       tagName={"h6"}
       className="text-center border-2 rounded-full p-2 border-primary text-lg"
       >READY TO GET STARTED?</Heading
     >
-    <Heading tagName={"h2"} className="text-center"
+    <Heading tagName={"h2"} className="text-center mt-4"
       >Book a free consultation below.</Heading
     >
   </Section>
@@ -70,7 +75,7 @@ import Heading from "@/components/Heading";
     <div
       class="calendly-inline-widget"
       data-url="https://calendly.com/retentiontransformation/nofap-consultation-session?hide_event_type_details=1&hide_gdpr_banner=1"
-      style="min-width:320px;height:750px;"
+      style="min-width:320px;height:610px;"
     >
     </div>
     <script
@@ -87,7 +92,7 @@ import Heading from "@/components/Heading";
     collection="testimonials"
     sectionClass="flex flex-col justify-center items-center min-h-[100vh]"
     contentClass="flex flex-col justify-center items-center text-center"
-    headingClass="py-5"
+    headingClass="py-8 flex flex-col justify-between items-center min-h-[25vh]"
     query="getAll"
     component={Card}
     ifButton={false}

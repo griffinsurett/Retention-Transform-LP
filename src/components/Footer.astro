@@ -1,7 +1,9 @@
 ---
+import { SiteData } from "@/content/SiteData";
+
 // Footer.astro
 ---
 
-<footer>
-    <p>&copy; {new Date().getFullYear()} Your Company. All rights reserved.</p>
+<footer class="my-5 text-center font-extralight">
+    <p>&copy; {new Date().getFullYear()} {SiteData.title}. All rights reserved.</p>
 </footer>

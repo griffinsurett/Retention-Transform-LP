@@ -2,11 +2,11 @@
 import Logo from "@/assets/rtp-transparent.png"
 
 export const SiteData = {
-    title: "Griffins Site",
+    title: "Retention Transformation Program",
     description: "This is a site for Griffin to sit down and learn astro.js and start his journey of going pro",
     logo: {
         src: Logo,
-        alt: "Griffin's logo",
+        alt: "Retention Transformation Program logo",
     }
 }
 

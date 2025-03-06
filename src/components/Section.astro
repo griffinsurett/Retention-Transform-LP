@@ -67,7 +67,7 @@ const finalShowButton = showButton && !isCollectionRootPage;
 ---
 {isDynamic ? (
   <section class={`${sectionClass} w-full flex justify-center items-center lg:px-15`} data-collection={collectionName} {...props}>
-    <div class={`${contentClass} w-1/2`}>
+    <div class={`${contentClass} w-3/4`}>
       <div class={headingClass}>
         <Heading tagName="h2">
           {heading ?? capitalize(collectionName)}
@@ -97,7 +97,7 @@ const finalShowButton = showButton && !isCollectionRootPage;
   </section>
 ) : (
   <section class={`${sectionClass} w-full flex justify-center items-center lg:px-15`} {...props}>
-    <div class={`${contentClass} w-1/2`}>
+    <div class={`${contentClass}`}>
       {heading && (
         <Heading tagName="h2" className={headingClass}>
           {heading}

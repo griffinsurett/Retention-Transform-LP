@@ -1,38 +1,51 @@
 // src/components/Video.jsx
 import PropTypes from "prop-types";
 
-/**
- * Video
- *
- * Renders a video player. You can pass either:
- *   1) a "src" prop (for a direct video file like .mp4), or
- *   2) a "youtubeId" prop for an embedded YouTube video.
- *
- * Additional optional props: "autoPlay", "controls", "loop", "muted", "poster"
- *
- * If "youtubeId" is present, we’ll render an <iframe> for YouTube.
- * Otherwise, we’ll render a native <video> tag.
- */
 export default function Video({
+  // Local file props
   src,
+  thumbnail,          // local video poster image
+  // YouTube + Vimeo IDs
   youtubeId,
+  vimeoId,
+  // shared props
   autoPlay = false,
   controls = true,
   loop = false,
   muted = false,
-  poster,
   className,
-  width = 560,
-  height = 315,
+  // width = 560,
+  // height = 315,
   ...rest
 }) {
-  // 1) If we have a YouTube ID, render an iframe
+  // 1) If we have a Vimeo ID, render a Vimeo iframe
+  if (vimeoId) {
+    // Vimeo embed URL
+    // Note: Add any parameters you like, e.g. autoplay, loop, etc.
+    // https://developer.vimeo.com/player/embedding
+    const vimeoSrc = `https://player.vimeo.com/video/${vimeoId}?autoplay=${autoPlay ? 1 : 0}&loop=${loop ? 1 : 0}&muted=${muted ? 1 : 0}`;
+    return (
+      <iframe
+        // width={width}
+        // height={height}
+        src={vimeoSrc}
+        className={className}
+        frameBorder="0"
+        allow="autoplay; fullscreen; picture-in-picture"
+        allowFullScreen
+        title="Vimeo video"
+        {...rest}
+      />
+    );
+  }
+
+  // 2) If we have a YouTube ID, render a YouTube iframe
   if (youtubeId) {
     const youTubeSrc = `https://www.youtube.com/embed/${youtubeId}?autoplay=${autoPlay ? 1 : 0}&loop=${loop ? 1 : 0}`;
     return (
       <iframe
-        width={width}
-        height={height}
+        // width={width}
+        // height={height}
         src={youTubeSrc}
         className={className}
         title="YouTube video"
@@ -44,40 +57,36 @@ export default function Video({
     );
   }
 
-  // 2) Otherwise, render a <video> element for a direct file
+  // 3) Otherwise, render a local <video> element
   return (
     <video
-      width={width}
-      height={height}
+      // width={width}
+      // height={height}
       src={src}
+      poster={thumbnail}
       className={className}
       autoPlay={autoPlay}
       controls={controls}
       loop={loop}
       muted={muted}
-      poster={poster}
       {...rest}
     />
   );
 }
 
 Video.propTypes = {
+  // local file props
   src: PropTypes.string,
+  thumbnail: PropTypes.string,
+  // embed IDs
   youtubeId: PropTypes.string,
+  vimeoId: PropTypes.string,
+  // shared props
   autoPlay: PropTypes.bool,
   controls: PropTypes.bool,
   loop: PropTypes.bool,
   muted: PropTypes.bool,
-  poster: PropTypes.string,
+  className: PropTypes.string,
   width: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   height: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
-};
-
-Video.defaultProps = {
-  autoPlay: false,
-  controls: true,
-  loop: false,
-  muted: false,
-  width: 560,
-  height: 315,
 };
