@@ -22,7 +22,7 @@ export default function Button({
         {...(Component === "button" ? { type } : {})}
         {...(Component === "a" ? { href } : {})}
         onClick={onClick}
-        className={`${classname} bg-primary text-white px-4 py-2 rounded-md text-xl`}
+        className={`${classname} bg-primary text-white px-4 py-3 rounded-md text-xl`}
         {...props}
       >
         {children}
