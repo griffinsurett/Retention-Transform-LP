@@ -28,48 +28,50 @@
   --line-height-h4: 1.4;
   --line-height-h5: 1.5;
   --line-height-h6: 1.5;
+
+  --border-radius: 500;
 }
 
 @layer base {
   body {
-    background-color: var(--color-background);
+    background-color: var(--color-primary);
     color: var(--color-text, #ffffff); /* fallback to white if undefined */
   }
 
   h1 {
     font-size: var(--font-size-h1);
     line-height: var(--line-height-h1);
-    font-weight: 700;
+    font-weight: var(--border-radius);
   }
 
   h2 {
     font-size: var(--font-size-h2);
     line-height: var(--line-height-h2);
-    font-weight: 600;
+    font-weight: var(--border-radius);
   }
 
   h3 {
     font-size: var(--font-size-h3);
     line-height: var(--line-height-h3);
-    font-weight: 600;
+    font-weight: var(--border-radius);
   }
 
   h4 {
     font-size: var(--font-size-h4);
     line-height: var(--line-height-h4);
-    font-weight: 500;
+    font-weight: var(--border-radius);
   }
 
   h5 {
     font-size: var(--font-size-h5);
     line-height: var(--line-height-h5);
-    font-weight: 500;
+    font-weight: var(--border-radius);
   }
 
   h6 {
     font-size: var(--font-size-h6);
     line-height: var(--line-height-h6);
-    font-weight: 500;
+    font-weight: var(--border-radius);
   }
 }
 
