@@ -1,11 +1,55 @@
 ---
-import Welcome from '../components/Welcome.astro';
-import Layout from '../layouts/Layout.astro';
-
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+import Layout from "@/layouts/Layout.astro";
+import Section from "@/components/Section.astro";
+import Card from "@/components/Card.jsx";
+import Video from "@/components/Video.jsx";
+import ListItem from "@/components/ListItem.jsx";
+import Heading from "@/components/Heading";
 ---
 
 <Layout>
-	<Welcome />
+    {/* Benefits */}
+    <Section
+    collection="benefits"
+    query="getAll"
+    component={ListItem}
+    heading="In Less Than An Hour, You Will Learn: "
+    description=""
+    sectionClass="mb-25"
+    contentClass="w-1/3"
+    headingClass="my-5 px-5 text-center"
+  >
+    <Heading tagName={"h4"} className="text-center">(With a couple bonuses…)</Heading>
+  </Section>
+
+  <Section heading="Watch Here" sectionClass="h-screen bg-primary" contentClass="flex flex-col justify-center items-center" headingClass="py-10 text-[var(--color-background)]">
+      <Video src="/video.mp4" className={"border-3 border-yellow-400"} width={1150} />
+  </Section>
+
+  <Section sectionClass="flex flex-col justify-center items-center bg-text text-background">
+    <p>NOTE: Finishing the training above is REQUIRED before having our call. We will be talking about specific concepts from this training, on the call.</p>
+  </Section>
+
+  <Section heading="" description="" sectionClass="cta-no-button flex justify-center items-center" contentClass="flex flex-col justify-center items-center" >
+    <Heading tagName={"h6"} className="text-center border-2 rounded-full p-2 border-primary">READY TO GET STARTED?</Heading>
+    <Heading tagName={"h2"} className="text-center">Book a free consultation below.</Heading>
+  </Section>
+
+<Section sectionClass="calandar bg-text">
+  <!-- <iframe src="https://calendly.com/yourlink" width="100%" height="800" frameborder="0"></iframe> -->
+</Section>
+
+  {/* Testimonials */}
+  <Section
+    heading="Client Interviews"
+    description="(The ones cool with being interviewed)"
+    collection="testimonials"
+    sectionClass="flex flex-col justify-center items-center"
+    contentClass="flex flex-col justify-center items-center"
+    query="getAll"
+    component={Card}
+    ifButton={false}
+  />
+
+  <Section id="CTA" sectionClass="text-center min-h-[50vh]" contentClass="flex flex-col justify-center items-center" heading="Ready To Be Our Next Success?" buttonClass="p-2 w-4/5" component={Card} ifButton={true} buttonLink="/cta" headingClass="text-5xl" />
 </Layout>
