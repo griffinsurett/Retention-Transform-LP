@@ -39,7 +39,8 @@ const {
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="generator" content={Astro.generator} />
   <link rel="icon" type="image/svg+xml" href={image} />
-
+  <!-- Preload the logo (LCP element) -->
+  <link rel="preload" as="image" href={image} />
   <!-- Title & Description -->
   <title>{title}</title>
   <meta name="description" content={description} />
