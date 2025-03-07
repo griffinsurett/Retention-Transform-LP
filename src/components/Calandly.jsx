@@ -1,8 +1,9 @@
 // src/components/Calendly.jsx
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 
 export default function Calendly() {
   const [widgetLoaded, setWidgetLoaded] = useState(false);
+  const calendlyContainerRef = useRef(null);
 
   const loadCalendly = () => {
     setWidgetLoaded(true);
@@ -13,6 +14,16 @@ export default function Calendly() {
       const script = document.createElement("script");
       script.src = "https://assets.calendly.com/assets/external/widget.js";
       script.async = true;
+      script.onload = () => {
+        if (window.Calendly && calendlyContainerRef.current) {
+          window.Calendly.initInlineWidget({
+            url: "https://calendly.com/retentiontransformation/nofap-consultation-session?hide_event_type_details=1&hide_gdpr_banner=1",
+            parentElement: calendlyContainerRef.current,
+            prefill: {},
+            utm: {},
+          });
+        }
+      };
       document.body.appendChild(script);
     }
   }, [widgetLoaded]);
@@ -28,8 +39,7 @@ export default function Calendly() {
         </button>
       ) : (
         <div
-          className="calendly-inline-widget"
-          data-url="https://calendly.com/retentiontransformation/nofap-consultation-session?hide_event_type_details=1&hide_gdpr_banner=1"
+          ref={calendlyContainerRef}
           style={{ minWidth: "320px", height: "610px" }}
         ></div>
       )}
