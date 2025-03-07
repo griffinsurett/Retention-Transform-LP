@@ -1,0 +1,51 @@
+---
+/**
+ * Video.astro
+ *
+ * This component renders a video element using a provided source and poster.
+ * It is optimized for performance by:
+ *   - Using preload="metadata" to load only video metadata initially.
+ *   - Enabling lazy loading (where supported) via the browser’s native mechanism.
+ *   - Supporting playsinline to avoid full-screen playback on mobile.
+ *
+ * Props:
+ *  - src (string): The URL of the video file (required).
+ *  - poster (string): The URL of the poster image (video template) (optional).
+ *  - autoPlay (boolean): Should the video play automatically (default: false).
+ *  - controls (boolean): Display native controls (default: true).
+ *  - loop (boolean): Loop the video (default: false).
+ *  - muted (boolean): Mute the video (default: false).
+ *  - className (string): Additional CSS classes (default: "").
+ *  - preload (string): Preload attribute for the video (default: "metadata").
+ */
+// import SampleVideo from "@/assets/SampleVideo_720x480_20mb.mp4";
+
+ const {
+  src,
+  poster,
+  autoPlay = false,
+  controls = true,
+  loop = false,
+  muted = false,
+  className = "",
+  preload = "metadata",
+} = Astro.props;
+
+if (!src) {
+  throw new Error("The 'src' prop is required for the Video component.");
+}
+---
+<video
+  src={src}
+  poster={poster}
+  autoPlay={autoPlay}
+  controls={controls}
+  loop={loop}
+  muted={muted}
+  class={className}
+  preload={preload}
+  playsinline
+  style="width: 100%; height: auto;"
+>
+  Your browser does not support the video tag.
+</video>
