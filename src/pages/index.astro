@@ -27,15 +27,12 @@ import SixWaysThumbnail from "@/assets/VSL-Thumbnail.png";
 
   <Section
     heading="Watch Here"
-    sectionClass="h-screen bg-primary min-h-[50vh]"
+    sectionClass="bg-primary flex flex-col justify-center items-center"
     contentClass="flex flex-col justify-center items-center lg:w-1/2"
-    headingClass="py-10 text-[var(--color-background)] text-center"
+    headingClass="py-4 sm:py-10 text-[var(--color-background)] text-center"
   >
     <Video
-      vimeoId={"1032494537"}
-      className={"border-3 border-yellow-400"}
-      thumbnail={SixWaysThumbnail.src}
-      allowFullScreen={true}
+      thumbnail={SixWaysThumbnail.src} className={"pb-4 sm:pb-10"}
     />
   </Section>
 
@@ -55,7 +52,7 @@ import SixWaysThumbnail from "@/assets/VSL-Thumbnail.png";
   <Section
     heading=""
     description=""
-    sectionClass="cta-no-button flex justify-center items-center min-h-[30vh]"
+    sectionClass="cta-no-button flex justify-center items-center min-h-[40vh]"
     contentClass="flex flex-col justify-center items-center w-full"
   >
     <Heading
@@ -63,7 +60,7 @@ import SixWaysThumbnail from "@/assets/VSL-Thumbnail.png";
       className="text-center border-2 rounded-full p-2 border-primary text-lg"
       >READY TO GET STARTED?</Heading
     >
-    <Heading tagName={"h2"} className="text-center mt-4"
+    <Heading tagName={"h2"} className="text-center mt-3"
       >Book a free consultation below.</Heading
     >
   </Section>
@@ -94,7 +91,7 @@ import SixWaysThumbnail from "@/assets/VSL-Thumbnail.png";
     contentClass="flex flex-col justify-center items-center text-center"
     headingClass="py-8 flex flex-col justify-between items-center min-h-[25vh]"
     query="getAll"
-    component={Card}
+    component={Video}
     ifButton={false}
   />
 
