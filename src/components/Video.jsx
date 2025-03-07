@@ -25,12 +25,7 @@ export default function Video({
           onClick={() => setIsPlayerLoaded(true)}
           style={{ cursor: "pointer", position: "relative" }}
         >
-          <img
-            src={thumbnail}
-            alt="Video Thumbnail"
-            loading="lazy"
-            style={{ width: "100%" }}
-          />
+       
           <div
             style={{
               position: "absolute",

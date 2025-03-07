@@ -1,0 +1,76 @@
+---
+import { Image } from 'astro:assets';
+const {
+  src,
+  thumbnail,
+  youtubeId,
+  autoPlay = false,
+  controls = true,
+  loop = false,
+  muted = false,
+  className = ''
+} = Astro.props;
+
+const hasYoutube = Boolean(youtubeId);
+const youTubeSrc = hasYoutube
+  ? `https://www.youtube.com/embed/${youtubeId}?autoplay=1&loop=${loop ? 1 : 0}`
+  : null;
+
+// For local videos, fallback to native video element.
+---
+<div class={className} id="video-container">
+  {hasYoutube ? (
+    <>
+      <!-- Thumbnail with optimized Astro Image -->
+      <div id="video-thumbnail" style="position: relative; cursor: pointer;">
+        <Image
+          src={thumbnail}
+          alt="Video Thumbnail"
+          width={640}  
+          height={360}
+          loading="lazy"
+        />
+        <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);">
+          <svg width="60" height="60" viewBox="0 0 24 24">
+            <path fill="white" d="M8 5v14l11-7z" />
+          </svg>
+        </div>
+      </div>
+      <!-- YouTube iframe initially hidden -->
+      <iframe
+        id="youtube-iframe"
+        src={youTubeSrc}
+        style="display: none; width: 100%; height: 360px;"
+        title="YouTube video"
+        frameborder="0"
+        loading="lazy"
+        allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+        allowfullscreen
+      ></iframe>
+    </>
+  ) : (
+    <video
+      src={src}
+      poster={thumbnail}
+      autoPlay={autoPlay}
+      controls={controls}
+      loop={loop}
+      muted={muted}
+      loading="lazy"
+      style="width: 100%; height: auto;"
+    ></video>
+  )}
+</div>
+
+<!-- Client-side script to swap thumbnail with iframe -->
+<script client:load>
+  const container = document.getElementById('video-container');
+  const thumb = document.getElementById('video-thumbnail');
+  const iframe = document.getElementById('youtube-iframe');
+  if (thumb && iframe) {
+    thumb.addEventListener('click', () => {
+      thumb.style.display = 'none';
+      iframe.style.display = 'block';
+    });
+  }
+</script>
