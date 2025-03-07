@@ -2,6 +2,7 @@
 import React, { useState } from "react";
 import PropTypes from "prop-types";
 import SixWaysThumbnail from "@/assets/VSL-Thumbnail.png";
+import { Picture } from "astro:assets";
 
 export default function Video({
   src,
