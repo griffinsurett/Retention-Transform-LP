@@ -2,7 +2,6 @@
 import Layout from "@/layouts/Layout.astro";
 import Section from "@/components/Section.astro";
 import Card from "@/components/Card.jsx";
-import Calandly from "@/components/Calandly.jsx";
 import Video from "@/components/Video.jsx";
 import ListItem from "@/components/ListItem.jsx";
 import Heading from "@/components/Heading";
@@ -69,7 +68,19 @@ import SixWaysThumbnail from "@/assets/VSL-Thumbnail.png";
   <Section
     sectionClass="calandar flex flex-col justify-center items-center bg-text min-h-[100vh] mb-4"
   >
-  <Calandly client:idle />
+    <!-- Calendly inline widget begin -->
+    <div
+      class="calendly-inline-widget"
+      data-url="https://calendly.com/retentiontransformation/nofap-consultation-session?hide_event_type_details=1&hide_gdpr_banner=1"
+      style="min-width:320px;height:610px;"
+    >
+    </div>
+    <script
+      defer
+      type="text/javascript"
+      src="https://assets.calendly.com/assets/external/widget.js"
+      async></script>
+    <!-- Calendly inline widget end -->
   </Section>
 
   {/* Testimonials */}
