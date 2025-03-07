@@ -1,5 +1,5 @@
 // SiteData.js
-import Logo from "@/assets/rtp-transparent.png"
+import Logo from "@/assets/rtp-logo.png";
 
 export const SiteData = {
     title: "Retention Transformation Program",
