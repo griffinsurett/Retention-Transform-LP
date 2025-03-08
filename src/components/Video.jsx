@@ -1,6 +1,5 @@
 // src/components/Video.jsx
 // import React, { useState } from "react";
-import PropTypes from "prop-types";
 import SixWaysThumbnail from "@/assets/VSL-Thumbnail.png";
 
 export default function Video({
@@ -29,14 +28,3 @@ export default function Video({
     />
   );
 }
-
-Video.propTypes = {
-  src: PropTypes.string,
-  thumbnail: PropTypes.string,
-  youtubeId: PropTypes.string,
-  autoPlay: PropTypes.bool,
-  controls: PropTypes.bool,
-  loop: PropTypes.bool,
-  muted: PropTypes.bool,
-  className: PropTypes.string,
-};
