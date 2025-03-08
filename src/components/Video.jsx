@@ -10,7 +10,7 @@ export default function Video({
   controls = true,
   loop = false,
   muted = false,
-  className,
+  className = "w-lg",
   ...rest
 }) {
 
