@@ -20,9 +20,8 @@ import Heading from "@/components/Heading";
     contentClass="flex flex-col justify-center items-center lg:w-1/2"
     headingClass="my-5 px-5 text-center"
   >
-    <Heading tagName={"h4"} className="text-center">
-      (With a couple bonuses…)
-      </Heading>
+  <Heading tagName={"h4"} className="text-center" children="(With a couple bonuses…)">
+  </Heading>
   </Section>
 
 
@@ -77,15 +76,16 @@ import Heading from "@/components/Heading";
     >
     </div>
     <script
-      defer
       type="text/javascript"
       src="https://assets.calendly.com/assets/external/widget.js"
-      async></script> -->
+      async
+      defer
+      ></script> -->
     <!-- Calendly inline widget end -->
   </Section>
 
   {/* Testimonials */}
-  <Section
+  <!-- <Section
     heading="Client Interviews"
     description="(The ones cool with being interviewed)"
     collection="testimonials"
@@ -95,7 +95,7 @@ import Heading from "@/components/Heading";
     query="getAll"
     component={Video}
     ifButton={false}
-  />
+  /> -->
 
   <Section
     id="CTA"
