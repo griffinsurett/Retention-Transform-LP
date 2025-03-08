@@ -1,5 +1,4 @@
 // src/components/ItemsTemplate.jsx
-import React from "react";
 import Card from "./Card.jsx";
 import { queryItems } from "@/utils/QueryUtils";
 
