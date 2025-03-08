@@ -9,5 +9,102 @@ import Heading from "@/components/Heading";
 ---
 
 <Layout>
-page
+  {/* Benefits */}
+  <Section
+    collection="benefits"
+    query="getAll"
+    component={ListItem}
+    heading="In Less Than An Hour, You Will Learn: "
+    description=""
+    sectionClass="mb-25 min-h-[50vh]"
+    contentClass="flex flex-col justify-center items-center lg:w-1/2"
+    headingClass="my-5 px-5 text-center"
+  >
+    <Heading tagName={"h4"} className="text-center"
+      >(With a couple bonuses…)</Heading
+    >
+  </Section>
+
+  <Section
+    heading="Watch Here"
+    sectionClass="bg-primary flex flex-col justify-center items-center"
+    contentClass="flex flex-col justify-center items-center lg:w-1/2"
+    headingClass="py-4 sm:py-10 text-[var(--color-background)] text-center"
+  >
+    <!-- <Video
+      thumbnail={SixWaysThumbnail.src} className={"pb-4 sm:pb-10 w-2xl"} client:idle
+    /> -->
+  </Section>
+
+  <Section
+    sectionClass="flex flex-col justify-center items-center bg-text text-background min-h-[50vh]"
+    contentClass="px-5 sm:px-0 lg:w-1/2"
+  >
+    <p class="text-xl">
+      <i>
+        <strong>NOTE: </strong>Finishing the training above is <u>REQUIRED</u> before
+        having our call. We will be talking about specific concepts from this training,
+        on the call.
+      </i>
+    </p>
+  </Section>
+
+  <Section
+    heading=""
+    description=""
+    sectionClass="cta-no-button flex justify-center items-center min-h-[40vh]"
+    contentClass="flex flex-col justify-center items-center w-full"
+  >
+    <Heading
+      tagName={"h6"}
+      className="text-center border-2 rounded-full p-2 border-primary text-lg"
+      >READY TO GET STARTED?</Heading
+    >
+    <Heading tagName={"h2"} className="text-center mt-3"
+      >Book a free consultation below.</Heading
+    >
+  </Section>
+
+  <Section
+    sectionClass="calandar flex flex-col justify-center items-center bg-text min-h-[100vh] mb-4"
+  >
+    <!-- Calendly inline widget begin -->
+    <!-- <div
+      class="calendly-inline-widget"
+      data-url="https://calendly.com/retentiontransformation/nofap-consultation-session?hide_event_type_details=1&hide_gdpr_banner=1"
+      style="min-width:320px;height:610px;"
+    >
+    </div>
+    <script
+      defer
+      type="text/javascript"
+      src="https://assets.calendly.com/assets/external/widget.js"
+      async></script> -->
+    <!-- Calendly inline widget end -->
+  </Section>
+
+  {/* Testimonials */}
+  <!-- <Section
+    heading="Client Interviews"
+    description="(The ones cool with being interviewed)"
+    collection="testimonials"
+    sectionClass="flex flex-col justify-center items-center min-h-[100vh]"
+    contentClass="flex flex-col justify-center items-center text-center"
+    headingClass="py-8 flex flex-col justify-between items-center min-h-[25vh]"
+    query="getAll"
+    component={Video}
+    ifButton={false}
+  /> -->
+
+  <Section
+    id="CTA"
+    sectionClass="text-center min-h-[50vh]"
+    contentClass="flex flex-col justify-center items-center "
+    heading="Ready To Be Our Next Success?"
+    buttonClass="p-2 sm:w-full lg:w-3/5"
+    component={Card}
+    ifButton={true}
+    buttonLink="/cta"
+    headingClass="text-5xl"
+/>
 </Layout>
