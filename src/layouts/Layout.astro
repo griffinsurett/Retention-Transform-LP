@@ -21,7 +21,7 @@ import IconImage from "@/assets/Icon-Logo.jpg"
 const {
   title = SiteData.title,       // fallback if no title passed
   description = SiteData.description,
-  image = SiteData.logo,        // fallback if not provided
+  image = SiteData.logo.src,        // fallback if not provided
   ogType = "website",
   canonicalUrl,          // optional
   robots,                  // e.g. "index,follow"
