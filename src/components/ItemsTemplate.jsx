@@ -23,6 +23,7 @@ export default async function ItemsTemplate({
   query,
   items: initialItems,
   ItemComponent,
+  itemsClass,
   itemClass,
   pathname = "",
   ...props
@@ -34,9 +35,9 @@ export default async function ItemsTemplate({
 
   const RenderComponent = ItemComponent || Card;
   return items && items.length > 0 ? (
-    <ul className={itemClass} {...props}>
+    <ul className={itemsClass} {...props}>
       {items.map((item) => (
-          <RenderComponent item={item} collectionName={collection} />
+          <RenderComponent item={item} itemClass={itemClass} collectionName={collection} />
       ))}
     </ul>
   ) : (

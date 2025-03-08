@@ -4,8 +4,15 @@ import { Picture } from 'astro:assets';
 ---
 <header class="header w-full py-10 flex justify-center items-center"> 
   <a href="/">
-    <Picture src={SiteData.logo.src} alt={SiteData.title} 
-    formats={['avif', 'webp']} fallbackFormat="png" 
-    loading="eager" fetchpriority="high" />
+    <Picture 
+      src={SiteData.logo.src} 
+      alt={SiteData.title} 
+      formats={['avif', 'webp']} 
+      fallbackFormat="png" 
+      loading="eager" 
+      fetchpriority="high" 
+      width={520} 
+      height={210} 
+    />
   </a>
 </header>
