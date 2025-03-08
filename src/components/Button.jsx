@@ -27,7 +27,7 @@ export default function Button({
       {...(Component === "a" ? { href } : {})}
       onClick={onClick}
       aria-label={ariaLabel}
-      className={`${classname} cursor-pointer bg-primary text-white px-4 py-3 rounded-md text-xl transition-opacity duration-200 hover:opacity-75 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary`}
+      className={`${classname} cursor-pointer text-white rounded-full p-2 border-primary text-lg transition-opacity duration-200 hover:opacity-75 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary`}
       {...roleProps}
       {...props}
     >
