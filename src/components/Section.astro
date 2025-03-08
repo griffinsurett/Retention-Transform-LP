@@ -20,8 +20,8 @@
  *  - contentClass: (string) Additional classes for a wrapping <div> inside the section for content styling.
  */
 
-import Heading from "./Heading.jsx";
-import Card from "./Card.jsx";
+ import Heading from "./Heading.jsx";
+// import Card from "./Card.jsx";
 import Button from "./Button.jsx";
 import ItemsTemplate from "./ItemsTemplate.jsx";
 import { getCollectionMeta } from "@/utils/FetchMeta";
@@ -80,12 +80,10 @@ const finalShowButton = showButton && !isCollectionRootPage;
         <Heading tagName="h2" id={headingId}>
           {heading ?? capitalize(collectionName)}
         </Heading>
-
         {(description || meta.description) && (
           <p class={descriptionClass}>{description ?? meta.description}</p>
         )}
       </div>
-
       <ItemsTemplate
         collection={collectionName}
         query={queryType}
@@ -93,13 +91,11 @@ const finalShowButton = showButton && !isCollectionRootPage;
         ItemComponent={ItemComponent}
         pathname={Astro.url.pathname}
       />
-
       {finalShowButton && (
-        <Button href={finalButtonLink} classname="some-classes">
+        <Button href={finalButtonLink} classname="some-classes" ariaLabel={`View all ${capitalize(collectionName)}`}>
           View All {capitalize(collectionName)}
         </Button>
       )}
-
       <slot />
     </div>
   </section>
@@ -115,13 +111,10 @@ const finalShowButton = showButton && !isCollectionRootPage;
           {heading}
         </Heading>
       )}
-
       {description && <p class={descriptionClass}>{description}</p>}
-
       <slot />
-
       {finalShowButton && (
-        <Button href={buttonLink} classname={`${buttonClass} mt-10`}>
+        <Button href={buttonLink} classname={`${buttonClass} mt-10`} ariaLabel="Learn More">
           Learn More
         </Button>
       )}

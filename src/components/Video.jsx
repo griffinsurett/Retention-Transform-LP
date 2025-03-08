@@ -10,9 +10,9 @@ export default function Video({
   loop = false,
   muted = false,
   className = "w-lg",
+  ariaLabel, // optional prop for accessibility
   ...rest
 }) {
-
   // For local videos, add lazy loading via the poster attribute.
   return (
     <video
@@ -24,6 +24,7 @@ export default function Video({
       loop={loop}
       muted={muted}
       loading="lazy"
+      aria-label={ariaLabel}
       {...rest}
     />
   );

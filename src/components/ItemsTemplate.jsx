@@ -34,9 +34,9 @@ export default async function ItemsTemplate({
 
   const RenderComponent = ItemComponent || Card;
   return items && items.length > 0 ? (
-    <ul className={itemsClass} {...props}>
+    <ul className={itemsClass} aria-label="Items List" {...props}>
       {items.map((item) => (
-          <RenderComponent key={item} item={item} itemClass={itemClass} collectionName={collection} />
+        <RenderComponent key={item} item={item} itemClass={itemClass} collectionName={collection} />
       ))}
     </ul>
   ) : (

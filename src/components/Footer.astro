@@ -1,9 +1,8 @@
 ---
 import { SiteData } from "@/content/SiteData";
-
 // Footer.astro
 ---
 
-<footer class="my-5 text-center font-extralight text-xl">
-    <p>&copy; {new Date().getFullYear()} {SiteData.title}. All rights reserved.</p>
+<footer class="my-5 text-center font-extralight text-xl" aria-label="Site Footer">
+  <p>&copy; {new Date().getFullYear()} {SiteData.title}. All rights reserved.</p>
 </footer>
