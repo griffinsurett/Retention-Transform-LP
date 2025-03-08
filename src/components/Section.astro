@@ -44,6 +44,9 @@ const {
   ...props
 } = Astro.props;
 
+// Generate a unique heading id if a heading exists
+const headingId = heading ? (collectionName ? `section-heading-${collectionName}` : "section-heading") : null;
+
 const finalButtonLink = buttonLink || `/${collectionName}`;
 const isDynamic = Boolean(collectionName && queryType);
 
@@ -66,10 +69,15 @@ const isCollectionRootPage =
 const finalShowButton = showButton && !isCollectionRootPage;
 ---
 {isDynamic ? (
-  <section class={`${sectionClass} w-full flex justify-center items-center lg:px-15`} data-collection={collectionName} {...props}>
+  <section
+    class={`${sectionClass} w-full flex justify-center items-center lg:px-15`}
+    data-collection={collectionName}
+    aria-labelledby={headingId}
+    {...props}
+  >
     <div class={`${contentClass} w-3/4`}>
       <div class={headingClass}>
-        <Heading tagName="h2">
+        <Heading tagName="h2" id={headingId}>
           {heading ?? capitalize(collectionName)}
         </Heading>
 
@@ -96,10 +104,14 @@ const finalShowButton = showButton && !isCollectionRootPage;
     </div>
   </section>
 ) : (
-  <section class={`${sectionClass} w-full flex justify-center items-center lg:px-15`} {...props}>
+  <section
+    class={`${sectionClass} w-full flex justify-center items-center lg:px-15`}
+    aria-labelledby={headingId}
+    {...props}
+  >
     <div class={`${contentClass} w-3/4`}>
       {heading && (
-        <Heading tagName="h2" className={headingClass}>
+        <Heading tagName="h2" className={headingClass} id={headingId}>
           {heading}
         </Heading>
       )}
