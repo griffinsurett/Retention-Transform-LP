@@ -35,9 +35,9 @@ export default async function ItemsTemplate({
   const RenderComponent = ItemComponent || Card;
   return items && items.length > 0 ? (
     <ul className={itemsClass} {...props}>
-      {items.map((item) => (
+      {/* {items.map((item) => (
           <RenderComponent key={item} item={item} itemClass={itemClass} collectionName={collection} />
-      ))}
+      ))} */}
     </ul>
   ) : (
     <p>No items found.</p>
