@@ -37,7 +37,7 @@ export default async function ItemsTemplate({
   return items && items.length > 0 ? (
     <ul className={itemsClass} {...props}>
       {items.map((item) => (
-          <RenderComponent item={item} itemClass={itemClass} collectionName={collection} />
+          <RenderComponent key={item} item={item} itemClass={itemClass} collectionName={collection} />
       ))}
     </ul>
   ) : (
