@@ -5,7 +5,6 @@ import Card from "@/components/Card.jsx";
 // import Video from "@/components/Video.jsx";
 import ListItem from "@/components/ListItem.jsx";
 import Heading from "@/components/Heading";
-import VideoEmbed from "@/components/VideoEmbed.astro";
 // import SixWaysThumbnail from "@/assets/VSL-Thumbnail.png";
 ---
 
@@ -89,7 +88,7 @@ import VideoEmbed from "@/components/VideoEmbed.astro";
   </Section>
 
   {/* Testimonials */}
-  <!-- <Section
+  <Section
     heading="Client Interviews"
     description="(The ones cool with being interviewed)"
     collection="testimonials"
@@ -97,9 +96,9 @@ import VideoEmbed from "@/components/VideoEmbed.astro";
     contentClass="flex flex-col justify-center items-center text-center"
     headingClass="py-8 flex flex-col justify-between items-center min-h-[25vh]"
     query="getAll"
-    component={VideoEmbed}
+    component={ListItem}
     ifButton={false}
-  /> -->
+  />
 
   <Section
     id="CTA"
