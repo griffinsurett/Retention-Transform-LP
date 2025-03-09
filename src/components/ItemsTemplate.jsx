@@ -27,10 +27,10 @@ export default async function ItemsTemplate({
   return items && items.length > 0 ? (
     <ul className={itemsClass} aria-label="Items List" {...props}>
       {items.map((item) => {
-        let additionalProps = {};
+        let props = {};
         if (isObjectComponent) {
           // If props is a function, call it with the current item
-          additionalProps =
+          props =
             typeof ItemComponent.props === "function"
               ? ItemComponent.props(item)
               : ItemComponent.props || {};
@@ -41,7 +41,7 @@ export default async function ItemsTemplate({
             item={item}
             itemClass={itemClass}
             collectionName={collection}
-            {...additionalProps}
+            {...props}
           />
         );
       })}

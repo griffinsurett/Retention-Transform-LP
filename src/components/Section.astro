@@ -20,7 +20,7 @@
  *  - contentClass: (string) Additional classes for a wrapping <div> inside the section for content styling.
  */
 
- import Heading from "./Heading.jsx";
+import Heading from "./Heading.jsx";
 // import Card from "./Card.jsx";
 import Button from "./Button.jsx";
 import ItemsTemplate from "./ItemsTemplate.jsx";
@@ -39,6 +39,7 @@ const {
   headingClass,
   descriptionClass,
   buttonClass,
+  itemsClass,
   itemClass,
   contentClass,
   ...props
@@ -87,6 +88,7 @@ const finalShowButton = showButton && !isCollectionRootPage;
       <ItemsTemplate
         collection={collectionName}
         query={queryType}
+        itemsClass={itemsClass}
         itemClass={itemClass}
         ItemComponent={ItemComponent}
         pathname={Astro.url.pathname}
