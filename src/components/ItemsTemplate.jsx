@@ -1,5 +1,5 @@
 // src/components/ItemsTemplate.jsx
-import Card from "./Card.jsx";
+import Card from "./LoopComponents/Card.jsx";
 import { queryItems } from "@/utils/QueryUtils";
 
 export default async function ItemsTemplate({

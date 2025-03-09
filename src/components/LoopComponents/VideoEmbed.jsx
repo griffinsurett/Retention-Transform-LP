@@ -1,5 +1,5 @@
 // src/components/VideoEmbed.jsx
-export default function VideoEmbed({ video, title = "Video", width = "350", height = "350" }) {
+export default function VideoEmbed({ video, title = "Video", itemClass, }) {
   function getVimeoEmbedUrl(videoUrl) {
     const match = videoUrl.match(/vimeo\.com\/(\d+)/);
     if (match && match[1]) {
@@ -11,11 +11,10 @@ export default function VideoEmbed({ video, title = "Video", width = "350", heig
   return (
     <iframe
       src={getVimeoEmbedUrl(video)}
-      width={width}
-      height={height}
       frameBorder="0"
       allow="autoplay; fullscreen; picture-in-picture"
       title={title}
+      className={`${itemClass} video-embed aspect-video`}
     />
   );
 }

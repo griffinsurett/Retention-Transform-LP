@@ -1,11 +1,11 @@
 ---
 import Layout from "@/layouts/Layout.astro";
 import Section from "@/components/Section.astro";
-import Card from "@/components/Card.jsx";
+import Card from "@/components/LoopComponents/Card.jsx";
 // import Video from "@/components/Video.jsx";
-import ListItem from "@/components/ListItem.jsx";
+import ListItem from "@/components/LoopComponents/ListItem.jsx";
 import Heading from "@/components/Heading";
-import VideoEmbed from "@/components/VideoEmbed";
+import VideoEmbed from "@/components/LoopComponents/VideoEmbed";
 // import SixWaysThumbnail from "@/assets/VSL-Thumbnail.png";
 ---
 
@@ -90,23 +90,24 @@ import VideoEmbed from "@/components/VideoEmbed";
 
   {/* Testimonials */}
   <Section
-  heading="Client Interviews"
-  description="(The ones cool with being interviewed)"
-  collection="testimonials"
-  sectionClass="flex flex-col justify-center items-center min-h-[100vh]"
-  contentClass="flex flex-col justify-center items-center text-center"
-  headingClass="py-8 flex flex-col justify-between items-center min-h-[25vh]"
-  itemsClass="flex flex-wrap justify-between"
-  query="getAll"
-  component={{
-    component: VideoEmbed,
-    props: (item) => ({
-      video: item.data.video,
-      title: item.data.title
-    })
-  }}
-  ifButton={false}
-/>
+    heading="Client Interviews"
+    description="(The ones cool with being interviewed)"
+    collection="testimonials"
+    sectionClass="flex flex-col justify-center items-center min-h-[100vh]"
+    contentClass="flex flex-col justify-center items-center text-center"
+    headingClass="py-8 flex flex-col justify-between items-center min-h-[25vh]"
+    itemsClass="flex flex-wrap justify-center sm:justify-between"
+    itemClass="sm:basis-1/2 my-4"
+    query="getAll"
+    component={{
+      component: VideoEmbed,
+      props: (item) => ({
+        video: item.data.video,
+        title: item.data.title,
+      }),
+    }}
+    ifButton={false}
+  />
 
   <Section
     id="CTA"
