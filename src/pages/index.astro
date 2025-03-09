@@ -89,16 +89,19 @@ import Heading from "@/components/Heading";
 
   {/* Testimonials */}
   <Section
-    heading="Client Interviews"
-    description="(The ones cool with being interviewed)"
-    collection="testimonials"
-    sectionClass="flex flex-col justify-center items-center min-h-[100vh]"
-    contentClass="flex flex-col justify-center items-center text-center"
-    headingClass="py-8 flex flex-col justify-between items-center min-h-[25vh]"
-    query="getAll"
-    component={ListItem}
-    ifButton={false}
-  />
+  heading="Client Interviews"
+  description="(The ones cool with being interviewed)"
+  collection="testimonials"
+  sectionClass="flex flex-col justify-center items-center min-h-[100vh]"
+  contentClass="flex flex-col justify-center items-center text-center"
+  headingClass="py-8 flex flex-col justify-between items-center min-h-[25vh]"
+  query="getAll"
+  component={{
+    component: ListItem,
+    props: (item) => ({ description: item.body })
+  }}
+  ifButton={false}
+/>
 
   <Section
     id="CTA"
