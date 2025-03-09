@@ -1,5 +1,5 @@
-// src/components/VideoEmbed.jsx
-export default function VideoEmbed({ video, title = "Video", itemClass, }) {
+// src/components/LoopComponents/VideoEmbed.jsx
+export default function VideoEmbed({ video, title = "Video", itemClass }) {
   function getVimeoEmbedUrl(videoUrl) {
     const match = videoUrl.match(/vimeo\.com\/(\d+)/);
     if (match && match[1]) {
@@ -15,7 +15,7 @@ export default function VideoEmbed({ video, title = "Video", itemClass, }) {
       allow="autoplay; fullscreen; picture-in-picture"
       title={title}
       className={`${itemClass} video-embed aspect-video`}
-      // loading="lazy"
+      loading="lazy"
     />
   );
 }
