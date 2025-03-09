@@ -20,16 +20,18 @@ import Heading from "@/components/Heading";
     contentClass="flex flex-col justify-center items-center lg:w-1/2"
     headingClass="my-5 pt-3 px-5 text-center"
   >
-  <Heading tagName={"h4"} className="text-center" children="(With a couple bonuses…)">
-  </Heading>
+    <Heading
+      tagName={"h4"}
+      className="text-center"
+      children="(With a couple bonuses…)"
+    />
   </Section>
-
 
   <Section
     heading="Watch Here"
     sectionClass="bg-primary flex flex-col justify-center items-center"
     contentClass="flex flex-col justify-center items-center lg:w-1/2"
-    headingClass="py-4 sm:py-10 text-[var(--color-background)] text-center"
+    headingClass="py-4 sm:py-10 text-background text-center"
   >
     <!-- <Video
       thumbnail={SixWaysThumbnail.src} className={"pb-4 sm:pb-10 w-2xl"} client:idle
@@ -58,20 +60,21 @@ import Heading from "@/components/Heading";
     <Heading
       tagName={"h6"}
       className="text-center border-2 rounded-full p-2 border-primary text-lg"
-      >READY TO GET STARTED?</Heading
-    >
-    <Heading tagName={"h2"} className="text-center mt-3"
-      >Book a free consultation below.</Heading
-    >
+      children={"Ready to get started?"}
+    />
+    <Heading
+      tagName={"h2"}
+      className="text-center mt-3"
+      children={"Book a free consultation below."}
+    />
   </Section>
 
   <Section
     id="calandar"
-    sectionClass="calandar flex flex-col justify-center items-center bg-text min-h-[100vh] mb-4"
+    sectionClass="calandar flex flex-col justify-center items-center bg-text min-h-[70vh] mb-4"
   >
-    <!-- Calendly inline widget begin -->
-     <!-- Best Practices Needs to Be fixed here -->
-    <div
+    <!-- Best Practices Needs to Be fixed -->
+    <!-- <div
       class="calendly-inline-widget"
       data-url="https://calendly.com/retentiontransformation/nofap-consultation-session?hide_event_type_details=1&hide_gdpr_banner=1"
       style="min-width:320px;height:610px;"
@@ -81,9 +84,7 @@ import Heading from "@/components/Heading";
       type="text/javascript"
       src="https://assets.calendly.com/assets/external/widget.js"
       async
-      defer
-      ></script>
-    <!-- Calendly inline widget end -->
+      defer></script> -->
   </Section>
 
   {/* Testimonials */}
@@ -109,5 +110,5 @@ import Heading from "@/components/Heading";
     ifButton={true}
     buttonLink="#calandar"
     headingClass="text-5xl"
-/>
+  />
 </Layout>

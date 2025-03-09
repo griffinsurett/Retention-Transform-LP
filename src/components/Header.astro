@@ -2,7 +2,7 @@
 import { SiteData } from '@/content/SiteData';
 import { Picture } from 'astro:assets';
 ---
-<header class="header w-full min-h-[30vh] flex justify-center items-center" role="banner">
+<header class="header w-full min-h-[20vh] flex justify-center items-center" role="banner">
   <a href="/" aria-label="Home">
     <Picture 
       src={SiteData.logo.src} 
@@ -11,8 +11,8 @@ import { Picture } from 'astro:assets';
       fallbackFormat="png" 
       loading="eager" 
       fetchpriority="high" 
-      width={380} 
-      height={209} 
+      width={340} 
+      height={220} 
     />
   </a>
 </header>
