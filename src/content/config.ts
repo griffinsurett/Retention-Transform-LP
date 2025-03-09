@@ -29,7 +29,7 @@ export const collections = {
   testimonials: defineCollection({
     schema: ({ image }) =>
       baseSchema({ image }).extend({
-        video: z.string().optional(), // New optional video field
+        video: z.string().optional(), // The MD file provides only the video URL
       }),
   }),
   benefits: defineCollection({}),

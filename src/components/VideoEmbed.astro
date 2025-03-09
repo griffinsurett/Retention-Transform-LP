@@ -1,0 +1,40 @@
+---
+/**
+ * VideoEmbed.astro
+ *
+ * This component takes a video URL (src) as a prop and builds a responsive Vimeo embed.
+ * It adds preset query parameters and applies the styles and iframe structure.
+ *
+ * Props:
+ *   - src (string): The Vimeo video URL (required)
+ *   - title (string): The accessible title for the video embed (optional, default "Video Testimonial")
+ */
+ const { src, title = "Video Testimonial" } = Astro.props;
+
+if (!src) {
+  throw new Error("The 'src' prop is required for VideoEmbed.");
+}
+
+// Convert a standard Vimeo URL to an embed URL if necessary.
+let embedUrl = src;
+if (!src.includes("player.vimeo.com")) {
+  // Replace "vimeo.com" with "player.vimeo.com/video"
+  embedUrl = src.replace("vimeo.com/", "player.vimeo.com/video/");
+}
+
+// Append the desired query parameters.
+// These parameters disable the badge, autopause, enable quality selection, etc.
+const queryParams = "badge=0&autopause=0&quality_selector=1&player_id=0&app_id=58479";
+const separator = embedUrl.includes("?") ? "&" : "?";
+const finalUrl = `${embedUrl}${separator}${queryParams}`;
+---
+<div style="padding:56.25% 0 0 0;position:relative;">
+  <iframe
+    src={finalUrl}
+    frameborder="0"
+    allow="autoplay; fullscreen; picture-in-picture"
+    style="position:absolute;top:0;left:0;width:100%;height:100%;"
+    title={title}
+  ></iframe>
+</div>
+<script src="https://player.vimeo.com/api/player.js"></script>
