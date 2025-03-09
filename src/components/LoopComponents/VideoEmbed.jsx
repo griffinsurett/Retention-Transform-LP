@@ -15,7 +15,7 @@ export default function VideoEmbed({ video, title = "Video", itemClass, }) {
       allow="autoplay; fullscreen; picture-in-picture"
       title={title}
       className={`${itemClass} video-embed aspect-video`}
-      // loading="lazy"
+      loading="lazy"
     />
   );
 }
