@@ -1,5 +1,5 @@
 // src/components/LoopComponents/VideoEmbed.jsx
-export default function VideoEmbed({ video, title = "Video", itemClass }) {
+export default function VideoEmbed({ video, title = "Video", itemClass, thumbnail }) {
   function getVimeoEmbedUrl(videoUrl) {
     const match = videoUrl.match(/vimeo\.com\/(\d+)/);
     if (match && match[1]) {
@@ -8,14 +8,24 @@ export default function VideoEmbed({ video, title = "Video", itemClass }) {
     return videoUrl;
   }
   
+  // Use the provided thumbnail if available; otherwise, show a default text
+  const summaryContent = thumbnail ? (
+    <img src={thumbnail} alt={`${title} thumbnail`} className="w-full h-auto" />
+  ) : (
+    <span className="p-4 text-xl">▶ {title} (Click to play)</span>
+  );
+
   return (
-    <iframe
-      src={getVimeoEmbedUrl(video)}
-      frameBorder="0"
-      allow="autoplay; fullscreen; picture-in-picture"
-      title={title}
-      className={`${itemClass} video-embed aspect-video`}
-      loading="lazy"
-    />
+    <details className={`${itemClass} video-embed`} style={{ cursor: 'pointer' }}>
+      <summary>{summaryContent}</summary>
+      <iframe
+        src={getVimeoEmbedUrl(video)}
+        frameBorder="0"
+        allow="autoplay; fullscreen; picture-in-picture"
+        title={title}
+        loading="lazy"
+        allowFullScreen
+      />
+    </details>
   );
 }
