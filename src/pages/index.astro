@@ -4,6 +4,7 @@ import Section from "@/components/Section.astro";
 import Card from "@/components/LoopComponents/Card.jsx";
 import ListItem from "@/components/LoopComponents/ListItem.jsx";
 import Heading from "@/components/Heading";
+import Calendly from "@/components/Calendly";
 import VideoEmbed from "@/components/LoopComponents/VideoEmbed.jsx";
 // import SixWaysThumbnail from "@/assets/VSL-Thumbnail.png";
 ---
@@ -69,26 +70,16 @@ import VideoEmbed from "@/components/LoopComponents/VideoEmbed.jsx";
     />
   </Section>
 
-      <!-- Best Practices Needs to Be fixed -->
+  <!-- Best Practices Needs to Be fixed -->
   <Section
     id="calandar"
     sectionClass="calandar flex flex-col justify-center items-center bg-text min-h-[80vh] mb-4"
   >
-    <div
-      class="calendly-inline-widget"
-      data-url="https://calendly.com/retentiontransformation/nofap-consultation-session?hide_event_type_details=1&hide_gdpr_banner=1"
-      style="min-width:320px;height:610px;"
-    >
-    </div>
-    <script
-      type="text/javascript"
-      src="https://assets.calendly.com/assets/external/widget.js"
-      async
-      defer></script>
+    <Calendly client:visible />
   </Section>
 
   {/* Testimonials */}
-  <Section
+  <!-- <Section
     heading="Client Interviews"
     description="(The ones cool with being interviewed)"
     collection="testimonials"
@@ -106,7 +97,7 @@ import VideoEmbed from "@/components/LoopComponents/VideoEmbed.jsx";
       }),
     }}
     ifButton={false}
-  />
+  /> -->
 
   <Section
     id="CTA"
