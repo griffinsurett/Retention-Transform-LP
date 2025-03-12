@@ -1,42 +1,55 @@
-// src/components/LoopComponents/Video/VideoClient.jsx
-import React, { useState } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 
 export default function VideoClient({ src, title = "Video", itemClass = "", thumbnail }) {
   const [isPlaying, setIsPlaying] = useState(false);
+  const containerRef = useRef(null);
 
-  // Helper to generate the embed URL from a Vimeo link with autoplay enabled
-  function getVimeoEmbedUrl(videoUrl) {
+  // Helper to generate the Vimeo embed URL with autoplay enabled
+  const getVimeoEmbedUrl = (videoUrl) => {
     const match = videoUrl.match(/vimeo\.com\/(\d+)/);
-    if (match && match[1]) {
-      return `https://player.vimeo.com/video/${match[1]}?autoplay=1&badge=0&autopause=0&quality_selector=1&player_id=0&app_id=58479`;
-    }
-    return videoUrl;
-  }
-
-  // When the thumbnail is clicked, update state to load the video
-  const handlePlay = (e) => {
-    e.stopPropagation();
-    console.log("Play button clicked – starting video.");
-    setIsPlaying(true);
+    return match && match[1]
+      ? `https://player.vimeo.com/video/${match[1]}?autoplay=1&badge=0&autopause=0&quality_selector=1&player_id=0&app_id=58479`
+      : videoUrl;
   };
 
-  // If user clicked play, load the video iframe which autoplays
+  // Attach a click handler to the play button rendered in the static markup.
+  useEffect(() => {
+    const container = containerRef.current;
+    if (!container) return;
+    const button = container.querySelector('button');
+    if (!button) return;
+    
+    const handlePlay = (e) => {
+      e.stopPropagation();
+      setIsPlaying(true);
+    };
+
+    button.addEventListener('click', handlePlay);
+    return () => {
+      button.removeEventListener('click', handlePlay);
+    };
+  }, []);
+
+  // When isPlaying is true, render the Vimeo iframe
   if (isPlaying) {
     return (
-      <iframe
-        src={getVimeoEmbedUrl(src)}
-        frameBorder="0"
-        allow="autoplay; fullscreen; picture-in-picture"
-        title={title}
-        className={`${itemClass} video-embed aspect-video`}
-        loading="lazy"
-      />
+      <div ref={containerRef} className={`${itemClass} video-container relative`}>
+        <iframe
+          src={getVimeoEmbedUrl(src)}
+          frameBorder="0"
+          allow="autoplay; fullscreen; picture-in-picture"
+          title={title}
+          className="w-full h-full"
+          loading="lazy"
+        />
+      </div>
     );
   }
 
-  // Otherwise, render the featured image with an overlaid play button
+  // Otherwise, render the static thumbnail with a play button overlay.
+  // (This markup can be statically rendered via Astro and hydrated as a React island.)
   return (
-    <div className={`${itemClass} video-thumbnail relative`}>
+    <div ref={containerRef} className={`${itemClass} video-container relative`}>
       <img
         src={thumbnail}
         alt={`Video thumbnail for ${title}`}
@@ -45,7 +58,6 @@ export default function VideoClient({ src, title = "Video", itemClass = "", thum
       <button
         className="absolute inset-0 flex justify-center items-center bg-transparent cursor-pointer z-10"
         aria-label={`Play ${title}`}
-        onClick={handlePlay}
       >
         <svg
           width="50"

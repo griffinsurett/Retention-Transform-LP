@@ -1,13 +1,39 @@
 ---
 // src/components/LoopComponents/Video/Video.astro
-import VideoClient from './VideoClient.jsx';
-
 const { src, title = "Video", itemClass = "", thumbnail } = Astro.props;
+
+// Generate the Vimeo embed URL with autoplay enabled.
+const getVimeoEmbedUrl = (videoUrl) => {
+  const match = videoUrl.match(/vimeo\.com\/(\d+)/);
+  return match && match[1]
+    ? `https://player.vimeo.com/video/${match[1]}?autoplay=1&badge=0&autopause=0&quality_selector=1&player_id=0&app_id=58479`
+    : videoUrl;
+};
+
+const embedUrl = getVimeoEmbedUrl(src);
 ---
-<VideoClient 
-  src={src} 
-  title={title} 
-  itemClass={itemClass} 
-  thumbnail={thumbnail} 
-  client:idle 
-/>
+<div class={`${itemClass} video-container relative`}>
+  <!-- Render the optimized static thumbnail -->
+  <img
+    src={thumbnail}
+    alt={`Video thumbnail for ${title}`}
+    class="w-full h-full object-cover"
+  />
+  <!-- When clicked, replace the thumbnail with the video iframe -->
+  <button
+    class="absolute inset-0 flex justify-center items-center bg-transparent cursor-pointer z-10"
+    aria-label={`Play ${title}`}
+    onClick={`this.parentElement.innerHTML = '<iframe src="${embedUrl}" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" title="${title}" class="w-full h-full" loading="lazy"></iframe>'`}
+  >
+    <svg
+      width="50"
+      height="50"
+      viewBox="0 0 50 50"
+      fill="white"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <circle cx="25" cy="25" r="25" fill="rgba(0,0,0,0.5)" />
+      <polygon points="20,15 35,25 20,35" fill="white" />
+    </svg>
+  </button>
+</div>
