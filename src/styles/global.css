@@ -14,8 +14,8 @@
     "Liberation Mono", "Courier New", monospace;
 
   /* Define font-size scale */
-  --font-size-h1: 3.2rem; /* 40px */
-  --font-size-h2: 3.2rem; /* 32px */
+  --font-size-h1: 3rem; /* 40px */
+  --font-size-h2: 3rem; /* 32px */
   --font-size-h3: 2.75rem; /* 28px */
   --font-size-h4: 2.5rem; /* 24px */
   --font-size-h5: 2.25rem; /* 20px */

@@ -19,9 +19,7 @@
  *  - itemClass: (string) Classes for the <ul> that wraps the <li> items (passed to ItemsTemplate)
  *  - contentClass: (string) Additional classes for a wrapping <div> inside the section for content styling.
  */
-
 import Heading from "./Heading.jsx";
-// import Card from "./Card.jsx";
 import Button from "./Button.jsx";
 import ItemsTemplate from "./ItemsTemplate.astro";
 import { getCollectionMeta } from "@/utils/FetchMeta";
@@ -42,6 +40,8 @@ const {
   itemsClass,
   itemClass,
   contentClass,
+  aboveItemsInjection, // new prop to inject content above items
+  belowItemsInjection, // new prop to inject content below items
   ...props
 } = Astro.props;
 
@@ -85,6 +85,13 @@ const finalShowButton = showButton && !isCollectionRootPage;
           <p class={descriptionClass}>{description ?? meta.description}</p>
         )}
       </div>
+
+      {aboveItemsInjection && (
+        <div class="above-items-injection">
+          {aboveItemsInjection}
+        </div>
+      )}
+
       <ItemsTemplate
         collection={collectionName}
         query={queryType}
@@ -93,8 +100,19 @@ const finalShowButton = showButton && !isCollectionRootPage;
         ItemComponent={ItemComponent}
         pathname={Astro.url.pathname}
       />
+
+      {belowItemsInjection && (
+        <div class="below-items-injection">
+          {belowItemsInjection}
+        </div>
+      )}
+
       {finalShowButton && (
-        <Button href={finalButtonLink} classname="some-classes" ariaLabel={`View all ${capitalize(collectionName)}`}>
+        <Button
+          href={finalButtonLink}
+          classname="some-classes"
+          ariaLabel={`View all ${capitalize(collectionName)}`}
+        >
           View All {capitalize(collectionName)}
         </Button>
       )}
@@ -116,7 +134,11 @@ const finalShowButton = showButton && !isCollectionRootPage;
       {description && <p class={descriptionClass}>{description}</p>}
       <slot />
       {finalShowButton && (
-        <Button href={buttonLink} classname={`${buttonClass} mt-10`} ariaLabel="Learn More">
+        <Button
+          href={buttonLink}
+          classname={`${buttonClass} mt-10`}
+          ariaLabel="Learn More"
+        >
           Learn More
         </Button>
       )}
