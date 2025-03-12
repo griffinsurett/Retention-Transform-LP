@@ -5,7 +5,7 @@ import Card from "@/components/LoopComponents/Card.jsx";
 import ListItem from "@/components/LoopComponents/ListItem.jsx";
 import Heading from "@/components/Heading";
 import Calendly from "@/components/Calendly";
-import VideoEmbed from "@/components/LoopComponents/VideoEmbed.jsx";
+import Video from "@/components/LoopComponents/Video/Video.astro";
 // import SixWaysThumbnail from "@/assets/VSL-Thumbnail.png";
 ---
 
@@ -84,7 +84,7 @@ import VideoEmbed from "@/components/LoopComponents/VideoEmbed.jsx";
   </Section>
 
   {/* Testimonials */}
-  <!-- <Section
+  <Section
     heading="Client Interviews"
     description="(The ones cool with being interviewed)"
     collection="testimonials"
@@ -95,14 +95,15 @@ import VideoEmbed from "@/components/LoopComponents/VideoEmbed.jsx";
     itemClass="sm:basis-1/2 my-4"
     query="getAll"
     component={{
-      component: VideoEmbed,
+      component: Video,
       props: (item) => ({
         video: item.data.video,
         title: item.data.title,
+        featuredImage: item.data.featuredImage.src,
       }),
     }}
     ifButton={false}
-  /> -->
+  />
 
   <Section
     id="CTA"
