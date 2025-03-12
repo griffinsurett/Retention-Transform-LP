@@ -6,7 +6,7 @@ import ListItem from "@/components/LoopComponents/ListItem.jsx";
 import Heading from "@/components/Heading";
 import Calendly from "@/components/Calendly";
 import Video from "@/components/LoopComponents/Video/Video.astro";
-// import SixWaysThumbnail from "@/assets/VSL-Thumbnail.png";
+import SixWaysThumbnail from "@/assets/VSL-Thumbnail.png";
 ---
 
 <Layout>
@@ -30,12 +30,11 @@ import Video from "@/components/LoopComponents/Video/Video.astro";
   <Section
     heading="Watch Here"
     sectionClass="bg-primary flex flex-col justify-center items-center"
-    contentClass="flex flex-col justify-center items-center lg:w-1/2"
+    contentClass="flex flex-col justify-center items-center pb-12 lg:w-1/2"
     headingClass="py-4 sm:py-10 text-background text-center"
   >
-    <!-- <Video
-      thumbnail={SixWaysThumbnail.src} className={"pb-4 sm:pb-10 w-2xl"} client:idle
-    /> -->
+    <Video
+      thumbnail={SixWaysThumbnail.src} itemClass={"md:w-3xl"} />
   </Section>
 
   <Section
