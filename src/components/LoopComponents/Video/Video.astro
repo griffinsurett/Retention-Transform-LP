@@ -2,10 +2,10 @@
 // src/components/LoopComponents/Video/Video.astro
 import VideoClient from './VideoClient.jsx';
 
-const { video, title = "Video", itemClass = "", thumbnail } = Astro.props;
+const { src, title = "Video", itemClass = "", thumbnail } = Astro.props;
 ---
 <VideoClient 
-  video={video} 
+  video={src} 
   title={title} 
   itemClass={itemClass} 
   thumbnail={thumbnail} 

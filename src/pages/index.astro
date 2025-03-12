@@ -33,8 +33,9 @@ import SixWaysThumbnail from "@/assets/VSL-Thumbnail.png";
     contentClass="flex flex-col justify-center items-center pb-12 lg:w-1/2"
     headingClass="py-4 sm:py-10 text-background text-center"
   >
-    <!-- <Video
-      thumbnail={SixWaysThumbnail.src} itemClass={"md:w-3xl"} /> -->
+    <Video
+      src="https://vimeo.com/829368431" thumbnail={SixWaysThumbnail.src} itemClass={"md:w-3xl"} 
+      />
   </Section>
 
   <Section
@@ -82,7 +83,7 @@ import SixWaysThumbnail from "@/assets/VSL-Thumbnail.png";
   </Section>
 
   {/* Testimonials */}
-  <!-- <Section
+  <Section
     heading="Client Interviews"
     description="(The ones cool with being interviewed)"
     collection="testimonials"
@@ -97,11 +98,11 @@ import SixWaysThumbnail from "@/assets/VSL-Thumbnail.png";
       props: (item) => ({
         video: item.data.video,
         title: item.data.title,
-        featuredImage: item.data.featuredImage.src,
+        thumbnail: item.data.featuredImage.src,
       }),
     }}
     ifButton={false}
-  /> -->
+  />
 
   <Section
     id="CTA"
