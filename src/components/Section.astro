@@ -19,6 +19,7 @@
  *  - itemClass: (string) Classes for the <ul> that wraps the <li> items (passed to ItemsTemplate)
  *  - contentClass: (string) Additional classes for a wrapping <div> inside the section for content styling.
  */
+// src/components/Section.astro
 import Heading from "./Heading.jsx";
 import Button from "./Button.jsx";
 import ItemsTemplate from "./ItemsTemplate.astro";
@@ -40,20 +41,23 @@ const {
   itemsClass,
   itemClass,
   contentClass,
-  aboveItemsInjection, // new prop to inject content above items
-  belowItemsInjection, // new prop to inject content below items
   ...props
 } = Astro.props;
 
 // Generate a unique heading id if a heading exists
-const headingId = heading ? (collectionName ? `section-heading-${collectionName}` : "section-heading") : null;
+const headingId = heading
+  ? collectionName
+    ? `section-heading-${collectionName}`
+    : "section-heading"
+  : null;
 
 const finalButtonLink = buttonLink || `/${collectionName}`;
 const isDynamic = Boolean(collectionName && queryType);
 
 let meta = { description: "", hasPage: false };
 if (isDynamic) {
-  const { description: desc = "", hasPage = false, ...restMeta } = await getCollectionMeta(collectionName);
+  const { description: desc = "", hasPage = false, ...restMeta } =
+    await getCollectionMeta(collectionName);
   meta = { description: desc, hasPage, ...restMeta };
 }
 
@@ -67,6 +71,7 @@ const showButton =
 const isCollectionRootPage =
   Astro.url.pathname === `/${collectionName}` ||
   Astro.url.pathname === `/${collectionName}/`;
+
 const finalShowButton = showButton && !isCollectionRootPage;
 ---
 {isDynamic ? (
@@ -86,11 +91,8 @@ const finalShowButton = showButton && !isCollectionRootPage;
         )}
       </div>
 
-      {aboveItemsInjection && (
-        <div class="above-items-injection">
-          {aboveItemsInjection}
-        </div>
-      )}
+      <!-- Inject custom content above items -->
+      <slot name="aboveItemsInjection" />
 
       <ItemsTemplate
         collection={collectionName}
@@ -101,11 +103,8 @@ const finalShowButton = showButton && !isCollectionRootPage;
         pathname={Astro.url.pathname}
       />
 
-      {belowItemsInjection && (
-        <div class="below-items-injection">
-          {belowItemsInjection}
-        </div>
-      )}
+      <!-- Inject custom content below items -->
+      <slot name="belowItemsInjection" />
 
       {finalShowButton && (
         <Button
