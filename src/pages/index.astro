@@ -30,7 +30,7 @@ import InterviewCompThumbnail from "@/assets/Interview-Compilation.png";
 
   <Section
     heading="Watch Here"
-    sectionClass="bg-primary flex flex-col justify-center items-center"
+    sectionClass="watch-here bg-primary flex flex-col justify-center items-center"
     contentClass="flex flex-col justify-center items-center pb-12 lg:w-1/2"
     headingClass="py-4 sm:py-10 text-background text-center"
   >
@@ -73,7 +73,8 @@ import InterviewCompThumbnail from "@/assets/Interview-Compilation.png";
   <!-- Best Practices Needs to Be fixed -->
   <Section
     id="calandar"
-    sectionClass="calandar flex flex-col justify-center items-center bg-text min-h-[80vh] mb-4"
+    sectionClass="calandar flex items-center bg-text min-h-[100vh] mb-4 overflow-hidden md:justify-center"
+    contentClass="m-0"
   >
     <Calendly
       client:visible
@@ -114,10 +115,10 @@ import InterviewCompThumbnail from "@/assets/Interview-Compilation.png";
 
   <Section
     id="CTA"
-    sectionClass="text-center min-h-[50vh]"
-    contentClass="flex flex-col justify-center items-center "
+    sectionClass="text-center min-h-[50vh] flex flex-col justify-center items-center"
+    contentClass="flex flex-col justify-center items-center"
     heading="Ready To Be Our Next Success?"
-    buttonClass="p-2 lg:w-1/4"
+    buttonClass="py-2 px-12"
     component={Card}
     ifButton={true}
     buttonLink="#calandar"
