@@ -1,7 +1,7 @@
 // src/components/LoopComponents/Video/VideoClient.jsx
 import React, { useState } from 'react';
 
-export default function VideoClient({ video, title = "Video", itemClass = "", thumbnail }) {
+export default function VideoClient({ src, title = "Video", itemClass = "", thumbnail }) {
   const [isPlaying, setIsPlaying] = useState(false);
 
   // Helper to generate the embed URL from a Vimeo link with autoplay enabled
@@ -24,7 +24,7 @@ export default function VideoClient({ video, title = "Video", itemClass = "", th
   if (isPlaying) {
     return (
       <iframe
-        src={getVimeoEmbedUrl(video)}
+        src={getVimeoEmbedUrl(src)}
         frameBorder="0"
         allow="autoplay; fullscreen; picture-in-picture"
         title={title}
@@ -34,7 +34,7 @@ export default function VideoClient({ video, title = "Video", itemClass = "", th
     );
   }
 
-  // Otherwise, render the thumbnail with an overlaid play button
+  // Otherwise, render the featured image with an overlaid play button
   return (
     <div className={`${itemClass} video-thumbnail relative`}>
       <img
