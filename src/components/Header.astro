@@ -9,8 +9,10 @@ import { Picture } from 'astro:assets';
       alt={SiteData.title} 
       formats={['avif', 'webp']} 
       fallbackFormat="png" 
-      loading="eager" 
-      fetchpriority="high" 
+      loading="eager"
+      quality={"low"}
+      fetchpriority="high"
+      aria-hidden="true"
       width={430} 
       height={400} 
       class='pt-8 my-6'
